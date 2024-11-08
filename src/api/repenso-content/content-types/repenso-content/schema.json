@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "repenso_contents",
+  "info": {
+    "singularName": "repenso-content",
+    "pluralName": "repenso-contents",
+    "displayName": "repenso/content",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "banner": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "class",
+        "ebook",
+        "article"
+      ],
+      "required": true
+    },
+    "content": {
+      "type": "customField",
+      "customField": "plugin::tinymce.tinymce",
+      "required": true
+    },
+    "file_url": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "tags": {
+      "type": "customField",
+      "default": "[]",
+      "options": [
+        "Mudanças climáticas",
+        "Inventário de emissões",
+        "Compensação de emissões",
+        "ESG",
+        "Marketing",
+        "Mitigação",
+        "Economia circular",
+        "Gestão climática",
+        "Mercado de carbono",
+        "Gestão de resíduos"
+      ],
+      "customField": "plugin::multi-select.multi-select",
+      "required": true,
+      "min": 1
+    },
+    "module_name": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::repenso-module.repenso-module",
+      "inversedBy": "repenso_content"
+    }
+  }
+}
